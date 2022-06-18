@@ -1,19 +1,19 @@
-FROM python:3.10-alpine
-
-WORKDIR /app
+FROM ubuntu:20.04
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
+ENV TZ=Asia/Kolkata
 
-RUN apk update \
-    && apk add --virtual build-essential gcc python3-dev musl-dev
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-COPY ./requirements.txt .
-RUN pip install -r requirements.txt
+RUN apt update
+
+RUN apt install python3 python3-pip -y
+
+WORKDIR /usr/src/app
 
 COPY . .
 
-RUN adduser -D myuser
-USER myuser
+RUN pip install --no-cache-dir -r requirements.txt
 
 CMD gunicorn assignment.wsgi:application --bind 0.0.0.0:$PORT
