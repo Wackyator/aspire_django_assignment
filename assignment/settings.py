@@ -80,10 +80,10 @@ WSGI_APPLICATION = 'assignment.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sql6500584',
-        'USER': 'sql6500584',
-        'PASSWORD': 'ZwDhE27dJ9',
-        'HOST': 'sql6.freemysqlhosting.net',
+        'NAME': 'FhOr33wf0z',
+        'USER': 'FhOr33wf0z',
+        'PASSWORD': 'tG6zhaTL7H',
+        'HOST': 'remotemysql.com',
         'PORT':'3306'
     }
 }
